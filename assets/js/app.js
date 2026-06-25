@@ -15,6 +15,14 @@ const addbtn = document.getElementById('addbtn')
 const updatebtn = document.getElementById('updatebtn')
 
 
+function tooltip(){
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+}
+
+
 
 function snackBar(msg,icon){
 
@@ -37,7 +45,7 @@ function createcards(arr){
         result += `
         <div class="col-md-3 mb-3" id="${comment.id}">
             <div class="card h-100">
-                <div class="card-header">
+                <div class="card-header" data-toggle="tooltip" data-placement="top" title="${comment.name}">
                     <h3>${comment.name}</h3>
                     <p>${comment.email}</p>
                     
@@ -49,7 +57,7 @@ function createcards(arr){
                 </div>
                 <div class="card-footer d-flex justify-content-between">
                     <button onClick="onEdit(this)" class="btn btn-outline-primary">Edit</button>
-                    <button onClick="onRemove(this)" class="btn btn-outline-primary">Remove</button>
+                    <button onClick="onRemove(this)" class="btn btn-outline-danger">Remove</button>
 
                 </div>
             </div>
@@ -58,7 +66,8 @@ function createcards(arr){
         
         `
     })
-    postContainer.innerHTML= result
+    postContainer.innerHTML= result;
+    tooltip()
 
 }
 
@@ -102,7 +111,7 @@ function onSubmit(eve){
             col.id= res.id
             col.innerHTML= `
              <div class="card h-100">
-                <div class="card-header">
+                <div class="card-header" data-toggle="tooltip" data-placement="top" title="${obj.name}">
                     <h3>${obj.name}</h3>
                     <p>${obj.email}</p>
                     
@@ -121,6 +130,8 @@ function onSubmit(eve){
             
             `
 postContainer.prepend(col)
+tooltip()
+formId.reset()
 snackBar(`Comment Added successfully`, `success`)
 
         }else{
@@ -205,6 +216,7 @@ xhr.onload=function(){
         
          addbtn.classList.add('d-none')
          updatebtn.classList.remove('d-none')
+         formId.reset()
 
 snackBar(`blog updated successfully`, `success`)
 
