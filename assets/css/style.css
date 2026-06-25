@@ -18,3 +18,48 @@ text-overflow: ellipsis;
     position:fixed;
     background-color: rgba(255, 255, 255, .7);
 }
+
+.highlight-card{
+    border: 2px solid green;
+    
+
+}
+
+.card{
+    background-color: rgb(170, 131, 206);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all .4s ease;
+}
+
+.card-header, .card-footer{
+    background-color: aliceblue;
+
+}
+body{
+    background-color:rgb(96, 33, 158);
+}
+.card:is(:hover, :active, :focus  ){
+    transform: scale(1.04);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

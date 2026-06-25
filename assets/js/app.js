@@ -153,6 +153,12 @@ xhr.onload= function(){
          addbtn.classList.add('d-none')
          updatebtn.classList.remove('d-none')
 
+         formId.scrollIntoView({
+            behavior: 'smooth',
+            block: "start"
+         })
+
+
 
     }else{
 
@@ -201,6 +207,18 @@ xhr.onload=function(){
          updatebtn.classList.remove('d-none')
 
 snackBar(`blog updated successfully`, `success`)
+
+col.scrollIntoView({
+    behavior: "smooth",
+    block:'center'
+})
+
+col.classList.add('highlight-card')
+setTimeout(()=>{
+    col.classList.remove('highlight-card')
+}, 4000)
+
+
     }else{
         snackBar(`something went wrong`, `error`)
 
